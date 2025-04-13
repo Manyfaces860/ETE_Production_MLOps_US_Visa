@@ -22,7 +22,7 @@ class USVisaException(Exception):
         """
         
         super().__init__(error_message)
-        self.error_message = USVisaException.get_detailed_error_message(str(error_message), error_detail)
+        self.error_message = get_detailed_error_message(str(error_message), error_detail)
         
     def __str__(self):
         return self.error_message

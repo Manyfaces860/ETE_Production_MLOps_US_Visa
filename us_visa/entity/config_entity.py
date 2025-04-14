@@ -12,11 +12,11 @@ class TrainingPipelineConfig:
     artifact_dir : str = os.path.join(ARTIFACT_DIR, TIMESTAMP)
     timestamp : str = TIMESTAMP
     
-training_pineline_config : TrainingPipelineConfig = TrainingPipelineConfig()
+training_pipeline_config : TrainingPipelineConfig = TrainingPipelineConfig()
 
 @dataclass
 class DataIngestionConfig:
-    data_ingestion_dir : str = os.path.join(training_pineline_config.artifact_dir, DATA_INGESTION_DIR_NAME)
+    data_ingestion_dir : str = os.path.join(training_pipeline_config.artifact_dir, DATA_INGESTION_DIR_NAME)
     feature_store_file_path : str = os.path.join(data_ingestion_dir, DATA_INGESTION_FEATURE_STORE_DIR, FILE_NAME)
     train_file_path : str = os.path.join(data_ingestion_dir, DATA_INGESTION_INGESTED_DIR, TRAIN_FILE_NAME)
     test_file_path : str = os.path.join(data_ingestion_dir, DATA_INGESTION_INGESTED_DIR, TEST_FILE_NAME)
@@ -26,6 +26,16 @@ class DataIngestionConfig:
     
 @dataclass
 class DataValidationConfig:
-    data_validation_dir : str = os.path.join(training_pineline_config.artifact_dir, DATA_VALIDATION_DIR_NAME)
+    data_validation_dir : str = os.path.join(training_pipeline_config.artifact_dir, DATA_VALIDATION_DIR_NAME)
     drift_report_file_path : str = os.path.join(data_validation_dir, DATA_VALIDATION_DRIFT_REPORT_DIR, DATA_VALIDATION_DRIFT_REPORT_FILE_NAME)
     
+@dataclass
+class DataTransformationConfig:
+    data_transformation_dir: str = os.path.join(training_pipeline_config.artifact_dir, DATA_TRANSFORMATION_DIR_NAME)
+    transformed_train_file_path: str = os.path.join(data_transformation_dir, DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
+                                                    TRAIN_FILE_NAME.replace("csv", "npy"))
+    transformed_test_file_path: str = os.path.join(data_transformation_dir, DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
+                                                   TEST_FILE_NAME.replace("csv", "npy"))
+    transformed_object_file_path: str = os.path.join(data_transformation_dir,
+                                                     DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR,
+                                                     PREPROCSSING_OBJECT_FILE_NAME)

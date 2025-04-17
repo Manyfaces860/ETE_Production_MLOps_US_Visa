@@ -2,5 +2,6 @@ artifacts
 us_visa/.env
 demo.py
 logs
+__pycache__
 us_visa/__pycache__
 us_visa/*/__pycache__

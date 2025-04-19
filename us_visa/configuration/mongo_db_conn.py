@@ -7,9 +7,7 @@ import os
 from us_visa.constants import DATABASE_NAME, MONGODB_URI_KEY
 import pymongo
 import certifi
-from dotenv import load_dotenv
 
-load_dotenv()
 ca = certifi.where()
 
 

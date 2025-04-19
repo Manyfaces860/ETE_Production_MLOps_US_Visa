@@ -20,7 +20,6 @@ mypy-boto3-s3
 botocore
 fastapi
 uvicorn
-dotenv
 jinja2
 python-multipart
 -e .
